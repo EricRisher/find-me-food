@@ -1,0 +1,30 @@
+.field {
+  max-width: 600px;
+}
+
+.container {
+  margin-left: 5px;
+  max-width: 40%;
+  margin-top: 200px;
+}
+
+.section {
+  width: 40%;
+  display: inline-block;
+}
+
+gmp-map {
+  height: 800px;
+  width: 800px;
+  position: absolute;
+  display: inline-block;
+  margin-left: 500px;
+  margin-top: 240px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
