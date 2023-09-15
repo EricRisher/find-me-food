@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +9,47 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   </head>
 
-  <body>
-    <h1>Find me food!</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Me Food</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
 
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Find Me Food</h1>
+      
+      <!-- Search form -->
+      <div class="field">
+        <label class="label">Location</label>
+        <div class="control">
+          <input class="input" type="text" id="locationInput" placeholder="Enter your location">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Cuisine</label>
+        <div class="control">
+          <input class="input" type="text" id="cuisineInput" placeholder="Enter desired cuisine">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary" id="searchButton">Search</button>
+        </div>
+      </div>
+
+      <!-- Results 4 stuff -->
+      <div id="resultsContainer"></div>
+    </div>
+  </section>
+
+  <script src="assets/js/script.js"></script>
+</body>
 
 
     <script src="assets/js/script.js"></script>
