@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Find me food!</title>
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  </head>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,22 +10,79 @@
 </head>
 
 <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">Find Me Food</h1>
-      
-      <!-- Search form -->
-      <div class="field">
-        <label class="label">Location</label>
-        <div class="control">
-          <input class="input" type="text" id="locationInput" placeholder="Enter your location">
-        </div>
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <img src="logoidk.png" alt="Find Me Food">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#">
+          Home
+        </a>
+
+        <a class="navbar-item" href="#">
+          About
+        </a>
+
+        <a class="navbar-item" href="#">
+          Contact
+        </a>
       </div>
 
-      <div class="field">
-        <label class="label">Cuisine</label>
-        <div class="control">
-          <input class="input" type="text" id="cuisineInput" placeholder="Enter desired cuisine">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" href="#">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light" href="#">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero is-primary is-medium">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Find Me Food</h1>
+        <h2 class="subtitle">Search for your favorite food items near you</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">Location</label>
+            <div class="control">
+              <input class="input" type="text" id="locationInput" placeholder="Enter your location">
+            </div>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">Cuisine</label>
+            <div class="control">
+              <input class="input" type="text" id="cuisineInput" placeholder="Enter desired cuisine">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -42,16 +91,36 @@
           <button class="button is-primary" id="searchButton">Search</button>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Results 4 stuff -->
-      <div id="resultsContainer"></div>
+  <!-- Results Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title has-text-centered">Search Results</h2>
+      <div id="resultsContainer">
+        <!-- Result items go here -->
+        <!-- Example result item -->
+        <div class="box">
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Restaurant Name</strong>
+                  <br>
+                  <span class="has-text-grey">Cuisine Type</span>
+                  <br>
+                  Address: 123 Main St, City, State
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
   <script src="assets/js/script.js"></script>
 </body>
 
-
-    <script src="assets/js/script.js"></script>
-  </body>
 </html>
