@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nearby Restaurant Locator</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nearby Restaurant Locator</h1>
+    <input type="text" id="restaurantName" placeholder="Enter restaurant name">
+    <button onclick="searchNearbyRestaurant()">Search</button>
+    <div id="map"></div>
+
+    <script>
+        let map;
+        let placesService;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 0, lng: 0 },
+                zoom: 10
+            });
+
+            placesService = new google.maps.places.PlacesService(map);
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        function onLocationSuccess(position) {
+            const currentPosition = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            map.setCenter(currentPosition);
+        }
+
+        function onLocationError(error) {
+            console.error("Error getting current location:", error);
+        }
+
+        function searchNearbyRestaurant() {
+            const restaurantName = document.getElementById("restaurantName").value;
+            const currentPosition = map.getCenter();
+            const request = {
+                location: currentPosition,
+                radius: 32187, // 20 miles in meters
+                keyword: restaurantName
+            };
+
+            placesService.nearbySearch(request, handleNearbyRestaurant);
+        }
+
+        function handleNearbyRestaurant(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                clearMarkers();
+                results.forEach(createMarker);
+            } else {
+                alert(`No restaurants found with the name "${document.getElementById("restaurantName").value}".`);
+            }
+        }
+
+        let markers = [];
+
+        function createMarker(place) {
+            const restaurantLocation = place.geometry.location;
+            const marker = new google.maps.Marker({
+                map: map,
+                position: restaurantLocation,
+                title: place.name
+            });
+            markers.push(marker);
+        }
+
+        function clearMarkers() {
+            markers.forEach(marker => marker.setMap(null));
+            markers = [];
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRCc3XYfsr71Rujcut54ZHHdYkrnxWas&callback=initMap&libraries=places" async defer></script>
+</body>
+</html>

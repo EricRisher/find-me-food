@@ -2,6 +2,15 @@
   max-width: 600px;
 }
 
+.navbar {
+  height: fit-content;
+}
+
+.navbar #find{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .container {
   margin-left: 6px;
   max-width: 40%;
@@ -13,7 +22,7 @@
   display: inline-block;
 }
 
-gmp-map {
+#map {
   height: 800px;
   width: 800px;
   position: absolute;

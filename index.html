@@ -1,39 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Find me food!</title>
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  </head>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Find Me Food</title>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRCc3XYfsr71Rujcut54ZHHdYkrnxWas&callback=initMap&libraries=places,marker,geometry&v=weekly">
+    </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRCc3XYfsr71Rujcut54ZHHdYkrnxWas&callback=console.debug&libraries=maps,marker&v=beta">
-    </script>
 </head>
 
 <section>
   <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+    <a class="navbar-item" id='find' href="#">Find me food!
+  
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="navbarBasicExample" class="navbar-menu"> 
     <div class="navbar-start">
       <a class="navbar-item">
         Home
@@ -59,24 +48,11 @@
             Contact
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
         </div>
       </div>
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
-      </div>
     </div>
   </div>
 </nav>
@@ -104,22 +80,20 @@
 
       <div class="field">
         <div class="control">
-          <button class="button is-primary" id="searchButton">Search</button>
+          <button class="button is-primary" id="searchButton" onclick = 'searchNearbyRestaurant()'>Search</button>
         </div>
       </div>
 
-      <!-- Results 4 stuff -->
-      <div id="resultsContainer"></div>
+      <!-- Results 10 stuff -->
+      <div id="resultsList"></div>
     </div>
   </section>
 
 </body>
 
-    <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="DEMO_MAP_ID">
-      <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="My location">
-      </gmp-advanced-marker>
-    </gmp-map>
-
+    <!-- Google map -->
+    <div id="map"></div>
+ 
     <script src="assets/js/script.js"></script>
   </body>
 </html>
