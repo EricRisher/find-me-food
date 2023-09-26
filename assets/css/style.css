@@ -2,10 +2,6 @@
   max-width: 600px;
 }
 
-.navbar {
-  height: fit-content;
-}
-
 .navbar #find {
   font-size: 1.5rem;
   font-weight: bold;
@@ -51,6 +47,7 @@ body {
   border-color: black;
   border-style: solid;
   border-radius: 3px;
+  margin-top: 40px;
 }
 
 #searchButton{
@@ -73,3 +70,4 @@ ul {
     list-style-type: none;
     font-weight: bold;
 }
+

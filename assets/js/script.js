@@ -1,6 +1,7 @@
 // Initialize variables for the map and Places Service
 let map;
 let placesService;
+let infoWindow;
 
 // Initialize the map when the page loads
 function initMap() {
@@ -8,6 +9,8 @@ function initMap() {
     center: { lat: 0, lng: 0 },
     zoom: 11,
   });
+
+    infoWindow = new google.maps.InfoWindow();
 
   // Create a Places Service for making nearby restaurant searches
   placesService = new google.maps.places.PlacesService(map);
@@ -174,6 +177,23 @@ const randomRestaurantButton = document.getElementById(
   "randomRestaurantButton"
 );
 randomRestaurantButton.addEventListener("click", getRandomRestaurant);
+
+function createMarker(place) {
+  const restaurantLocation = place.geometry.location;
+  const marker = new google.maps.Marker({
+    map: map,
+    position: restaurantLocation,
+    title: place.name,
+  });
+  markers.push(marker);
+
+  // Add a click event listener to open the InfoWindow
+  marker.addListener("click", function () {
+    const content = `<strong>${place.name}</strong><br>${place.vicinity}`;
+    infoWindow.setContent(content);
+    infoWindow.open(map, marker);
+  });
+}
 
 //Bulma files
 document.addEventListener("DOMContentLoaded", () => {
