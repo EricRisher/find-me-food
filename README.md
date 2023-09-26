@@ -13,4 +13,4 @@ to find everything.
 
 App link: https://ericrisher.github.io/find-me-food/
 
-(![Screenshot Capture - 2023-09-25 - 18-58-19](https://github.com/EricRisher/find-me-food/assets/109945090/e0443fa4-906b-41bf-a719-af2b984fd165)
+![Screenshot Capture - 2023-09-25 - 18-58-19](https://github.com/EricRisher/find-me-food/assets/109945090/e0443fa4-906b-41bf-a719-af2b984fd165)
