@@ -18,17 +18,15 @@
 }
 
 .section {
-  width: 40%;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(211, 226, 231);
 }
 
 #map {
   height: 800px;
   width: 800px;
-  position: absolute;
-  display: inline-block;
-  margin-left: 500px;
-  margin-top: 240px;
 }
 
 html,
@@ -45,4 +43,33 @@ body {
 
 #value-display {
   margin-left: 10px;
+}
+
+#resultsList{
+  background-color: rgb(218, 218, 218);
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 3px;
+}
+
+#searchButton{
+  align-items: center;
+  width: 200px;
+}
+
+#container{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items:baseline;
+}
+
+.control {
+  width: 300px;
+}
+
+ul {
+    list-style-type: none;
+    font-weight: bold;
 }

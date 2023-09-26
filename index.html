@@ -19,7 +19,7 @@
   <section>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" id="find" href="#">Find me food! </a>
+        <a class="navbar-item" id="find" href="https://ericrisher.github.io/find-me-food/">Find me food! </a>
 
         <a
           role="button"
@@ -34,9 +34,8 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item"> Home </a>
 
-          <a class="navbar-item"> Documentation </a>
+          <a class="navbar-item" href="https://docs.google.com/presentation/d/1ZptvG_2rVJfHJZWPbzutkePYSqT17PF8tnTveX7yVUA/edit#slide=id.g29f43f0a72_0_5"> Documentation </a>
 
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> More </a>
@@ -57,30 +56,16 @@
 
   <body>
     <section class="section">
-      <div class="container">
-        <h1 class="title">Find Me Food</h1>
-
+      <conatiner id="container">
         <!-- Search form -->
-        <div class="field">
-          <label class="label">Location</label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              id="locationInput"
-              placeholder="Enter your location"
-            />
-          </div>
-        </div>
-
         <div class="field">
           <label class="label">Cuisine</label>
           <div class="control">
             <input
               class="input"
               type="text"
-              id="cuisineInput"
-              placeholder="Enter desired cuisine"
+              id="locationInput"
+              placeholder="Enter your desired cuisine!"
             />
           </div>
         </div>
@@ -95,7 +80,7 @@
             step="1"
             value="10"
           />
-          <div id="value-display">Miles</div>
+          <div id="value-display"> 10 Miles</div>
         </div>
 
         <div class="field">
@@ -110,9 +95,16 @@
           </div>
         </div>
 
-        <!-- Results 10 stuff -->
-        <div id="resultsList"></div>
+        <button class="button" id="randomRestaurantButton">I'm feeling lucky</button>
+        <p id="randomRestaurantName"></p>
+      </conatiner>
+      
+      <div id="results">
+        <ul id="resultsList">Food list: </ul>
       </div>
+
+      <!-- Google map -->
+      <div id="map"></div>
     </section>
 
     <div id="modal-js-example" class="modal">
@@ -126,9 +118,6 @@
 
       <button class="modal-close is-large" aria-label="close"></button>
     </div>
-
-    <!-- Google map -->
-    <div id="map"></div>
 
     <script src="assets/js/script.js"></script>
   </body>

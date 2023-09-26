@@ -6,7 +6,7 @@ let placesService;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 0, lng: 0 },
-    zoom: 10,
+    zoom: 11,
   });
 
   // Create a Places Service for making nearby restaurant searches
@@ -116,8 +116,8 @@ function handleNearbyRestaurant(results, status) {
       return distanceA - distanceB;
     });
 
-    // Create a list of the top 10 results
-    const topResults = results.slice(0, 10);
+    // Create a list of the top 20 results
+    const topResults = results.slice(0, 20);
 
     // Clear the previous results
     resultsList.innerHTML = "";
@@ -125,10 +125,16 @@ function handleNearbyRestaurant(results, status) {
     // Loop through the top results and display them in the list
     topResults.forEach((place, index) => {
       const listItem = document.createElement("div");
+      const distance = google.maps.geometry.spherical.computeDistanceBetween(
+        map.getCenter(),
+        place.geometry.location
+      );
+
+            const distanceMiles = (distance / 1609.344).toFixed(2);
+
       listItem.innerHTML = `<strong>${index + 1}. ${place.name}</strong> - ${
         place.vicinity
-      }`;
-      resultsList.appendChild(listItem);
+      } (Distance: ${distanceMiles} miles)`;resultsList.appendChild(listItem);
       createMarker(place); // Also, create markers for these places on the map
     });
   } else {
@@ -136,9 +142,39 @@ function handleNearbyRestaurant(results, status) {
     resultsList.innerHTML = "";
     var modal = document.querySelector(".modal");
     modal.classList.add("is-active");
-
   }
 }
+
+function getRandomRestaurant() {
+  const currentPosition = map.getCenter();
+  const radius = slider.value * 1609;
+  const request = {
+    location: currentPosition,
+    radius: radius,
+    type: ["restaurant"],
+  };
+
+  placesService.nearbySearch(request, function (results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      // Select a random restaurant from the results
+      const randomIndex = Math.floor(Math.random() * results.length);
+      const randomRestaurant = results[randomIndex];
+
+      // Display the random restaurant name
+      const randomRestaurantName = randomRestaurant.name;
+      document.getElementById("randomRestaurantName").textContent =
+        "Random Restaurant: " + randomRestaurantName;
+    } else {
+      alert("Unable to fetch random restaurant. Please try again.");
+    }
+  });
+}
+
+const randomRestaurantButton = document.getElementById(
+  "randomRestaurantButton"
+);
+randomRestaurantButton.addEventListener("click", getRandomRestaurant);
+
 //Bulma files
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
