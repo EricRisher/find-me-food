@@ -1,4 +1,77 @@
-/* Navbar Styling */
+.field {
+  max-width: 600px;
+}
+
+.navbar #find {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.container {
+  margin-left: 6px;
+  max-width: 40%;
+  margin-top: 200px;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(211, 226, 231);
+}
+
+#map {
+  height: 800px;
+  width: 800px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#slider-container {
+  display: flex;
+  align-items: center;
+}
+
+#value-display {
+  margin-left: 10px;
+}
+
+#resultsList{
+  background-color: rgb(218, 218, 218);
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 3px;
+  margin-top: 40px;
+}
+
+#searchButton{
+  align-items: center;
+  width: 200px;
+}
+
+#container{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items:baseline;
+}
+
+.control {
+  width: 300px;
+}
+
+ul {
+    list-style-type: none;
+    font-weight: bold;
+}
+
+/* Navbar - Let's make it stylish! ZK */
 .navbar {
   background-color: #3a3a3a;
   padding: 20px;
@@ -13,7 +86,7 @@
   margin-left: auto;
 }
 
-/* Hero Section Styling */
+/* Hero Section - Time to shine! ZK */
 .hero {
   background-image: url("hero-background.jpg");
   background-size: cover;
@@ -34,18 +107,48 @@
   color: #fff;
 }
 
-/* Section Styling */
+/* Search Section - Let's find some tasty treats! ZK */
 .section {
   background-color: #f5f5f5;
   padding: 60px 0;
 }
 
-/* Reviews Section Styling */
-#reviewsContainer {
+.field label {
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #ff3860;
+}
+
+.button.is-primary {
+  background-color: #ff3860;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.button.is-primary:hover {
+  background-color: #e60046;
+}
+
+/* Results Section - Feast your eyes! ZK */
+.results-container {
   margin-top: 40px;
 }
 
-#reviewsContainer .title {
+.results-container .title {
   font-size: 36px;
   color: #4a4a4a;
   text-align: center;
@@ -71,50 +174,5 @@
 
 .has-text-grey {
   color: #888;
-}
-
-/* Review Form Styling */
-#reviewFormContainer {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#reviewFormContainer .subtitle {
-  font-size: 24px;
-  color: #4a4a4a;
-  margin-bottom: 20px;
-}
-
-#reviewFormContainer .field label {
-  font-weight: bold;
-  color: #4a4a4a;
-}
-
-#reviewFormContainer .input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-  transition: border-color 0.3s ease;
-}
-
-#reviewFormContainer .input:focus {
-  border-color: #ff3860;
-}
-
-#reviewFormContainer .button.is-primary {
-  background-color: #ff3860;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-#reviewFormContainer .button.is-primary:hover {
-  background-color: #e60046;
 }
 
