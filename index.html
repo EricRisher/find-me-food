@@ -5,28 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Find Me Food</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <script
+    async="false"
+    defer
+  ></script>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-  <section>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" id="find" href="https://ericrisher.github.io/find-me-food/">Find Me Food</a>
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <img src="logoidk.png" alt="Find Me Food">
+      </a>
 
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
@@ -51,16 +54,22 @@
 
   <section class="section">
     <div class="container">
-      <!-- Search form -->
-      <div class="field">
-        <label class="label">Cuisine</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            id="locationInput"
-            placeholder="Enter your desired cuisine"
-          />
+      <div class="columns">
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">Location</label>
+            <div class="control">
+              <input class="input" type="text" id="locationInput" placeholder="Enter your location">
+            </div>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">Cuisine</label>
+            <div class="control">
+              <input class="input" type="text" id="cuisineInput" placeholder="Enter desired cuisine">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -109,15 +118,8 @@
         <p>No restaurants within the specified range were found. Please try again.</p>
       </div>
     </div>
+  </section>
 
-    <button class="modal-close is-large" aria-label="close"></button>
-  </div>
-
-  <script
-    async="false"
-    defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRCc3XYfsr71Rujcut54ZHHdYkrnxWas&callback=initMap&libraries=places,marker,geometry&v=weekly"
-  ></script>
   <script src="assets/js/script.js"></script>
   <script src="assets/js/yelp-api.js"></script>
 </body>
