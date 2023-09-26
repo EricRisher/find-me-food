@@ -10,162 +10,114 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="#">
-        <img src="logoidk.png" alt="Find Me Food">
-      </a>
+  <section>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" id="find" href="https://ericrisher.github.io/find-me-food/">Find Me Food</a>
 
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="#">
-          Home
-        </a>
-
-        <a class="navbar-item" href="#">
-          About
-        </a>
-
-        <a class="navbar-item" href="#">
-          Contact
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary" href="#">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light" href="#">
-              Log in
-            </a>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+
+          <a class="navbar-item" href="https://docs.google.com/presentation/d/1ZptvG_2rVJfHJZWPbzutkePYSqT17PF8tnTveX7yVUA/edit#slide=id.g29f43f0a72_0_5">Documentation</a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">More</a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item">Previous Search</a>
+              <a class="navbar-item" href="https://github.com/EricRisher/find-me-food">GitHub Repo</a>
+              <hr class="navbar-divider" />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero is-primary is-medium">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">Find Me Food</h1>
-        <h2 class="subtitle">Search for your favorite food items near you</h2>
+        <div class="navbar-end"></div>
       </div>
-    </div>
+    </nav>
   </section>
 
-  <!-- Search Section -->
   <section class="section">
     <div class="container">
-      <div class="columns">
-        <div class="column is-half">
-          <div class="field">
-            <label class="label">Location</label>
-            <div class="control">
-              <input class="input" type="text" id="locationInput" placeholder="Enter your location">
-            </div>
-          </div>
+      <!-- Search form -->
+      <div class="field">
+        <label class="label">Cuisine</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            id="locationInput"
+            placeholder="Enter your desired cuisine"
+          />
         </div>
-        <div class="column is-half">
-          <div class="field">
-            <label class="label">Cuisine</label>
-            <div class="control">
-              <input class="input" type="text" id="cuisineInput" placeholder="Enter desired cuisine">
-            </div>
-          </div>
-        </div>
+      </div>
+
+      <div class="field" id="slider-container">
+        <label class="label">Search Radius</label>
+        <input
+          type="range"
+          id="slider"
+          min="1"
+          max="40"
+          step="1"
+          value="10"
+        />
+        <div id="value-display">10 Miles</div>
       </div>
 
       <div class="field">
         <div class="control">
-          <button class="button is-primary" id="searchButton">Search</button>
+          <button
+            class="button is-primary"
+            id="searchButton"
+            onclick="searchNearbyRestaurant()"
+          >
+            Search
+          </button>
         </div>
       </div>
+
+      <button class="button" id="randomRestaurantButton">I'm feeling lucky</button>
+      <p id="randomRestaurantName"></p>
     </div>
+
+    <div id="results">
+      <ul id="resultsList">Food list:</ul>
+    </div>
+
+    <!-- Google map -->
+    <div id="map"></div>
   </section>
 
-  <!-- Results Section -->
-  <section class="section">
-    <div class="container">
-      <h2 class="title has-text-centered">Search Results</h2>
-      <div id="resultsContainer">
-        <!-- Result items go here -->
-        <!-- Example result item -->
-        <div class="box">
-          <article class="media">
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>Restaurant Name</strong>
-                  <br>
-                  <span class="has-text-grey">Cuisine Type</span>
-                  <br>
-                  Address: 123 Main St, City, State
-                </p>
-                <button class="button is-info" data-restaurant-id="restaurantIdHere">View Menu</button>
-              </div>
-            </div>
-          </article>
-        </div>
+  <div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+      <div class="box">
+        <p>No restaurants within the specified range were found. Please try again.</p>
       </div>
     </div>
-  </section>
 
-  <!-- Reviews Section -->
-  <section class="section">
-    <div class="container">
-      <h2 class="title has-text-centered">Reviews</h2>
-      <div id="reviewsContainer">
-        <!-- Review items go here -->
-      </div>
-      <div id="reviewFormContainer">
-        <h3 class="subtitle has-text-centered">Submit a Review</h3>
-        <form id="reviewForm">
-          <div class="field">
-            <label class="label">Your Name</label>
-            <div class="control">
-              <input class="input" type="text" id="nameInput" placeholder="Enter your name" required>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Rating</label>
-            <div class="control">
-              <select class="select" id="ratingInput" required>
-                <option value="" disabled selected>Select a rating</option>
-                <option value="5">5 - Excellent</option>
-                <option value="4">4 - Good</option>
-                <option value="3">3 - Average</option>
-                <option value="2">2 - Poor</option>
-                <option value="1">1 - Terrible</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Review</label>
-            <div class="control">
-              <textarea class="textarea" id="reviewInput" placeholder="Enter your review" required></textarea>
-            </div>
-          </div>
-          <div class="field">
-            <div class="control">
-              <button class="button is-primary" type="submit">Submit</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
 
+  <script
+    async="false"
+    defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRCc3XYfsr71Rujcut54ZHHdYkrnxWas&callback=initMap&libraries=places,marker,geometry&v=weekly"
+  ></script>
   <script src="assets/js/script.js"></script>
   <script src="assets/js/yelp-api.js"></script>
 </body>
