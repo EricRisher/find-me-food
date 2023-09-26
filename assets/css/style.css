@@ -1,104 +1,120 @@
-/* Navbar - Let's make it stylish! ZK */
+/* Navbar Styling */
 .navbar {
-    background-color: #3a3a3a;
-    padding: 20px;
-  }
-  
-  .navbar-item img {
-    max-height: 50px;
-  }
-  
-  .navbar-start,
-  .navbar-end {
-    margin-left: auto;
-  }
-  
-  /* Hero Section - Time to shine! ZK */
-  .hero {
-    background-image: url("hero-background.jpg");
-    background-size: cover;
-    background-position: center;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    text-align: center;
-  }
-  
-  .hero .title {
-    font-size: 48px;
-    color: #fff;
-    margin-bottom: 20px;
-  }
-  
-  .hero .subtitle {
-    font-size: 24px;
-    color: #fff;
-  }
-  
-  /* Search Section - Let's find some tasty treats! ZK */
-  .section {
-    background-color: #f5f5f5;
-    padding: 60px 0;
-  }
-  
-  .field label {
-    font-weight: bold;
-    color: #4a4a4a;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .input:focus {
-    border-color: #ff3860;
-  }
-  
-  .button.is-primary {
-    background-color: #ff3860;
-    color: #fff;
-    font-weight: bold;
-    border: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button.is-primary:hover {
-    background-color: #e60046;
-  }
-  
-  /* Results Section - Feast your eyes! ZK */
-  .results-container {
-    margin-top: 40px;
-  }
-  
-  .results-container .title {
-    font-size: 36px;
-    color: #4a4a4a;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .box {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .box:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .box p {
-    margin-bottom: 10px;
-  }
-  
-  .has-text-grey {
-    color: #888;
-  }
+  background-color: #3a3a3a;
+  padding: 20px;
+}
+
+.navbar-item img {
+  max-height: 50px;
+}
+
+.navbar-start,
+.navbar-end {
+  margin-left: auto;
+}
+
+/* Hero Section Styling */
+.hero {
+  background-image: url("hero-background.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  text-align: center;
+}
+
+.hero .title {
+  font-size: 48px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.hero .subtitle {
+  font-size: 24px;
+  color: #fff;
+}
+
+/* Section Styling */
+.section {
+  background-color: #f5f5f5;
+  padding: 60px 0;
+}
+
+/* Reviews Section Styling */
+#reviewsContainer {
+  margin-top: 40px;
+}
+
+#reviewsContainer .title {
+  font-size: 36px;
+  color: #4a4a4a;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.box:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.box p {
+  margin-bottom: 10px;
+}
+
+.has-text-grey {
+  color: #888;
+}
+
+/* Review Form Styling */
+#reviewFormContainer {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#reviewFormContainer .subtitle {
+  font-size: 24px;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+}
+
+#reviewFormContainer .field label {
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+#reviewFormContainer .input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+
+#reviewFormContainer .input:focus {
+  border-color: #ff3860;
+}
+
+#reviewFormContainer .button.is-primary {
+  background-color: #ff3860;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+#reviewFormContainer .button.is-primary:hover {
+  background-color: #e60046;
+}
+
