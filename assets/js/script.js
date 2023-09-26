@@ -23,6 +23,12 @@ function initMap() {
   }
 }
 
+const slider = document.getElementById("slider");
+const valueDisplay = document.getElementById("value-display");
+slider.addEventListener("input", function () {
+  valueDisplay.textContent = slider.value + " Miles";
+});
+
 // Callback function when geolocation succeeds
 function onLocationSuccess(position) {
   // Set the current location as the map center
@@ -42,14 +48,18 @@ function onLocationError(error) {
 function searchNearbyRestaurant() {
   const restaurantName = document.getElementById("locationInput").value;
   const currentPosition = map.getCenter();
+  let radius = slider.value * 1609; // Converts miles to meters
+
   const request = {
     location: currentPosition,
-    radius: 32187, // 20 miles in meters
+    radius: radius,
     keyword: restaurantName,
+    type: ["restaurant"],
   };
 
   // Use the Places Service to search for nearby restaurants
   placesService.nearbySearch(request, handleNearbyRestaurant);
+  console.log(radius);
 }
 
 // Callback function to handle nearby restaurant search results
@@ -123,8 +133,56 @@ function handleNearbyRestaurant(results, status) {
     });
   } else {
     // Display a message if no restaurants are found
-    resultsList.innerHTML = `No restaurants found with the name "${
-      document.getElementById("restaurantName").value
-    }".`;
+    resultsList.innerHTML = "";
+    var modal = document.querySelector(".modal");
+    modal.classList.add("is-active");
+
   }
 }
+//Bulma files
+document.addEventListener("DOMContentLoaded", () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add("is-active");
+  }
+
+  function closeModal($el) {
+    $el.classList.remove("is-active");
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll(".modal") || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener("click", () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (
+    document.querySelectorAll(
+      ".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button"
+    ) || []
+  ).forEach(($close) => {
+    const $target = $close.closest(".modal");
+
+    $close.addEventListener("click", () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "Escape") {
+      closeAllModals();
+    }
+  });
+});

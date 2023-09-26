@@ -1,99 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find Me Food</title>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRCc3XYfsr71Rujcut54ZHHdYkrnxWas&callback=initMap&libraries=places,marker,geometry&v=weekly">
-    </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Me Food</title>
+    <script
+      async="false"
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRCc3XYfsr71Rujcut54ZHHdYkrnxWas&callback=initMap&libraries=places,marker,geometry&v=weekly"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-<section>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" id='find' href="#">Find me food!
-  
-    </a>
+  <section>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" id="find" href="#">Find me food! </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu"> 
-    <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
         </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-        </div>
-      </div>
-    </div>
-
-    <div class="navbar-end">
-    </div>
-  </div>
-</nav>
-</section>
-
-<body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">Find Me Food</h1>
-      
-      <!-- Search form -->
-      <div class="field">
-        <label class="label">Location</label>
-        <div class="control">
-          <input class="input" type="text" id="locationInput" placeholder="Enter your location">
-        </div>
       </div>
 
-      <div class="field">
-        <label class="label">Cuisine</label>
-        <div class="control">
-          <input class="input" type="text" id="cuisineInput" placeholder="Enter desired cuisine">
-        </div>
-      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item"> Home </a>
 
-      <div class="field">
-        <div class="control">
-          <button class="button is-primary" id="searchButton" onclick = 'searchNearbyRestaurant()'>Search</button>
-        </div>
-      </div>
+          <a class="navbar-item"> Documentation </a>
 
-      <!-- Results 10 stuff -->
-      <div id="resultsList"></div>
-    </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item"> About </a>
+              <a class="navbar-item"> Jobs </a>
+              <a class="navbar-item"> Contact </a>
+              <hr class="navbar-divider" />
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-end"></div>
+      </div>
+    </nav>
   </section>
 
-</body>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Find Me Food</h1>
+
+        <!-- Search form -->
+        <div class="field">
+          <label class="label">Location</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="locationInput"
+              placeholder="Enter your location"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Cuisine</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="cuisineInput"
+              placeholder="Enter desired cuisine"
+            />
+          </div>
+        </div>
+
+        <div class="field" id="slider-container">
+          <label class="label">Search Radius</label>
+          <input
+            type="range"
+            id="slider"
+            min="1"
+            max="40"
+            step="1"
+            value="10"
+          />
+          <div id="value-display">Miles</div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button
+              class="button is-primary"
+              id="searchButton"
+              onclick="searchNearbyRestaurant()"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+
+        <!-- Results 10 stuff -->
+        <div id="resultsList"></div>
+      </div>
+    </section>
+
+    <div id="modal-js-example" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+          <p>No restaruants within specified range found, please try again.</p>
+        </div>
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 
     <!-- Google map -->
     <div id="map"></div>
- 
+
     <script src="assets/js/script.js"></script>
   </body>
 </html>

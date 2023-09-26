@@ -6,7 +6,7 @@
   height: fit-content;
 }
 
-.navbar #find{
+.navbar #find {
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -36,4 +36,13 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+#slider-container {
+  display: flex;
+  align-items: center;
+}
+
+#value-display {
+  margin-left: 10px;
 }
