@@ -112,6 +112,7 @@
                   <br>
                   Address: 123 Main St, City, State
                 </p>
+                <button class="button is-info" data-restaurant-id="restaurantIdHere">View Menu</button>
               </div>
             </div>
           </article>
@@ -120,51 +121,50 @@
     </div>
   </section>
 
- <!-- Reviews Section -->
-<section class="section">
-  <div class="container">
-    <h2 class="title has-text-centered">Reviews</h2>
-    <div id="reviewsContainer">
-      <!-- Review items go here -->
+  <!-- Reviews Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title has-text-centered">Reviews</h2>
+      <div id="reviewsContainer">
+        <!-- Review items go here -->
+      </div>
+      <div id="reviewFormContainer">
+        <h3 class="subtitle has-text-centered">Submit a Review</h3>
+        <form id="reviewForm">
+          <div class="field">
+            <label class="label">Your Name</label>
+            <div class="control">
+              <input class="input" type="text" id="nameInput" placeholder="Enter your name" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Rating</label>
+            <div class="control">
+              <select class="select" id="ratingInput" required>
+                <option value="" disabled selected>Select a rating</option>
+                <option value="5">5 - Excellent</option>
+                <option value="4">4 - Good</option>
+                <option value="3">3 - Average</option>
+                <option value="2">2 - Poor</option>
+                <option value="1">1 - Terrible</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Review</label>
+            <div class="control">
+              <textarea class="textarea" id="reviewInput" placeholder="Enter your review" required></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    <div id="reviewFormContainer">
-      <h3 class="subtitle has-text-centered">Submit a Review</h3>
-      <form id="reviewForm">
-        <div class="field">
-          <label class="label">Your Name</label>
-          <div class="control">
-            <input class="input" type="text" id="nameInput" placeholder="Enter your name" required>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Rating</label>
-          <div class="control">
-            <select class="select" id="ratingInput" required>
-              <option value="" disabled selected>Select a rating</option>
-              <option value="5">5 - Excellent</option>
-              <option value="4">4 - Good</option>
-              <option value="3">3 - Average</option>
-              <option value="2">2 - Poor</option>
-              <option value="1">1 - Terrible</option>
-            </select>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Review</label>
-          <div class="control">
-            <textarea class="textarea" id="reviewInput" placeholder="Enter your review" required></textarea>
-          </div>
-        </div>
-        <div class="field">
-          <div class="control">
-            <button class="button is-primary" type="submit">Submit</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
+  </section>
 
   <script src="assets/js/script.js"></script>
   <script src="assets/js/yelp-api.js"></script>

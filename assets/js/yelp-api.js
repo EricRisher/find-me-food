@@ -55,6 +55,32 @@ function displayResults(businesses) {
     resultsContainer.appendChild(resultItem);
   });
 }
+async function viewMenu(restaurantId) {
+  const url = new URL(`https://api.yelp.com/v3/businesses/${restaurantId}`);
+  
+  const headers = new Headers({
+    'Authorization': `Bearer L7g3gvxjIcxAgmvNhhiIsVfj_FKUSYsMm7nVhlrpqOyr7YOXdLyJ14-U9txhR8bki8PA2PqJ8C_vzy5lS_7ZP3hEwq8lG-MKytyKCm_Kzx31n0ytkK7lsfqeoAYJZXYx`, // Insert your API Key here
+    'Content-Type': 'application/json',
+    'x-request-id': 'g2rBoeC8e8JEvnoypxmbjw', 
+  });
+
+  const requestOptions = {
+    method: 'GET',
+    headers: headers,
+  };
+
+  try {
+    const response = await fetch(url, requestOptions);
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+    const data = await response.json();
+    displayMenu(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
 
 function createResultItem(business) {
   const box = document.createElement('div');
@@ -89,7 +115,24 @@ function createResultItem(business) {
 
   return box;
 }
-// ... previous code ...
+
+function displayMenu(data) {
+  const menuContainer = document.createElement('div');
+  menuContainer.className = 'menu-container';
+
+  const menuTitle = document.createElement('h2');
+  menuTitle.textContent = 'Menu';
+
+  const menuItems = data.menu ? data.menu.sections.map(section => section.title + ': ' + section.description).join('\n') : 'Menu not available';
+
+  const menuContent = document.createElement('pre');
+  menuContent.textContent = menuItems;
+
+  menuContainer.appendChild(menuTitle);
+  menuContainer.appendChild(menuContent);
+
+  resultsContainer.appendChild(menuContainer);
+}
 
 const reviewForm = document.getElementById('reviewForm');
 const reviewsContainer = document.getElementById('reviewsContainer');
